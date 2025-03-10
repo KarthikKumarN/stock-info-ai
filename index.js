@@ -1,9 +1,9 @@
 import { dates } from "/utils/dates";
 
 const tickersArr = [];
-
 const generateReportBtn = document.querySelector(".generate-report-btn");
 
+// Click event listener
 generateReportBtn.addEventListener("click", fetchStockData);
 
 document.getElementById("ticker-input-form").addEventListener("submit", (e) => {
@@ -23,6 +23,9 @@ document.getElementById("ticker-input-form").addEventListener("submit", (e) => {
 	}
 });
 
+/**
+ * FUnction add stock to list
+ */
 function renderTickers() {
 	const tickersDiv = document.querySelector(".ticker-choice-display");
 	tickersDiv.innerHTML = "";
@@ -37,12 +40,9 @@ function renderTickers() {
 const loadingArea = document.querySelector(".loading-panel");
 const apiMessage = document.getElementById("api-message");
 
-/*
-  Challenge: Update the `fetch` request
-   - Make a request to the Polygon API via your new Worker
-   - Catch and log any errors returned by the Worker
-*/
-
+/**
+ * Functions fetches data from polygon
+ */
 async function fetchStockData() {
 	document.querySelector(".action-panel").style.display = "none";
 	loadingArea.style.display = "flex";
@@ -66,6 +66,10 @@ async function fetchStockData() {
 	}
 }
 
+/**
+ * Fetch stock prediction form AI and renders
+ * @param {*} data
+ */
 async function fetchReport(data) {
 	const messages = [
 		{
